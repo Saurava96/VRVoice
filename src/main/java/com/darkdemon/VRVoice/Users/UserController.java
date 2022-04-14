@@ -51,13 +51,37 @@ public class UserController {
 
     //This is only to update single data and not arrays which are placed in the userdata.
     @PostMapping(value = "/UpdateUserData/{UserID}/{newValue}/{dataToChange}")
-    public String UpdateUserDataValue(@PathVariable("UserID") String UserID, String newValue, String dataToChange) {
+    public String UpdateUserDataValue(@PathVariable("UserID") String UserID,@PathVariable("newValue") String newValue,@PathVariable("dataToChange") String dataToChange) {
 
         User user = UserRepo.GetUser(UserID);
 
         String userdata = user.getUserObject();
 
         String updatedData = UserRepo.UpdateUserDataValue(userdata,newValue,dataToChange);
+
+        if(updatedData.equals("-1"))
+        {
+            return "-1";
+        }
+        else
+        {
+            User.setUserObject(updatedData);
+
+            UserRepo.UpdateUser(user);
+
+            return "1";
+
+        }
+
+    }
+    //This updates the array which is placed in userdata.
+    @PostMapping(value = "/UpdateUserArray/{UserID}/{newValue}/{dataToChange}")
+    public String UpdateUserArray(@PathVariable("UserID") String UserID, @PathVariable("RoomID") String newValue, @PathVariable("dataToChange") String dataToChange){
+
+        User user = UserRepo.GetUser(UserID);
+        String userdata = user.getUserObject();
+
+        String updatedData = UserRepo.UpdateUserArray(userdata, newValue, dataToChange);
 
         if(updatedData.equals("-1")){
             return "-1";
@@ -70,7 +94,12 @@ public class UserController {
 
         }
 
+
     }
+
+
+
+
 
 
     @GetMapping(value = "/InternetCheck")

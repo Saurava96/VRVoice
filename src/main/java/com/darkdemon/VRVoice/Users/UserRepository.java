@@ -6,6 +6,7 @@ import com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException;
 import com.amazonaws.services.dynamodbv2.model.ExpectedAttributeValue;
 import com.darkdemon.VRVoice.Constants.ConstantController;
 import com.google.common.collect.ImmutableMap;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -66,6 +67,27 @@ public class UserRepository {
             JSONObject value = userdatajson.getJSONObject("value");
 
             value.put(dataToChange, newValue);
+
+            return json.toString();
+
+        }catch (Exception e){
+
+            return "-1";
+
+        }
+
+    }
+
+    public String UpdateUserArray(String userdata, String valueToAdd, String dataToChange){
+
+        try{
+            JSONObject json = new JSONObject(userdata);
+            JSONObject userdatajson = json.getJSONObject(ConstantController.UserData);
+            JSONObject value = userdatajson.getJSONObject("value");
+
+            JSONArray arrayToUpdate = value.getJSONArray(dataToChange);
+
+            arrayToUpdate.put(valueToAdd);
 
             return json.toString();
 
