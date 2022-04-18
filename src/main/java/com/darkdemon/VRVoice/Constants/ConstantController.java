@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class ConstantController {
 
 
-public static String UserBaseInfo = "UserBaseInfo";
+public final static String UserBaseInfo = "UserBaseInfo";
 
-public static String UserData = "UserData";
+public final static String UserData = "UserData";
 
-public static String Email = "Email";
+public final static String Email = "Email";
 
-public static String PhoneNumber = "PhoneNumber";
+public final static String JoinDate = "JoinDate";
 
-public static String BaseRoomID = "BaseRoomID";
+public final static String BaseRoomID = "BaseRoomID";
 
 }

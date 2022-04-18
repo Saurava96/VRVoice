@@ -27,11 +27,11 @@ public class UserRepository {
         DynamoDBSaveExpression saveExpression = new DynamoDBSaveExpression();
         Map<String, ExpectedAttributeValue> expectedAttributes =
                 ImmutableMap.<String, ExpectedAttributeValue>builder()
-                        .put("EmailID", new ExpectedAttributeValue(false))
-                        .put("Phone",new ExpectedAttributeValue(false))
+                        .put(ConstantController.Email, new ExpectedAttributeValue(false))
+
                         .build();
         saveExpression.setExpected(expectedAttributes);
-        saveExpression.setConditionalOperator(ConditionalOperator.AND);
+
         try {
             System.out.println("Saving User");
             Mapper.save(userObject, saveExpression);
@@ -69,7 +69,7 @@ public class UserRepository {
 
             value.put(dataToChange, newValue);
 
-            return json.toString();
+            return value.toString();
 
         }catch (Exception e){
 

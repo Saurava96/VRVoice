@@ -1,5 +1,6 @@
 package com.darkdemon.VRVoice.Users;
 import com.amazonaws.services.dynamodbv2.datamodeling.*;
+import com.darkdemon.VRVoice.Constants.ConstantController;
 
 import java.util.ArrayList;
 
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 public class User {
 
 
-    private String UserID;
+
     private String UserName;
     private ArrayList<String> Followers; //list
     private ArrayList<String> Following; //list
@@ -22,7 +23,7 @@ public class User {
     private String Email;
 
     private String Password;
-    private String PhoneNumber;
+
 
     private String UserObject;
 
@@ -35,25 +36,22 @@ public class User {
         UserObject = userObject;
     }
 
+
     @DynamoDBHashKey
-    @DynamoDBAttribute(attributeName = "UserID")
-    public String getUserID() {
-        return UserID;
-    }
-
-    public void setUserID(String userID) {
-        UserID = userID;
-    }
-
-    @DynamoDBAttribute(attributeName = "EmailID")
+    @DynamoDBAttribute(attributeName = ConstantController.Email)
     public String getEmail() {
         return Email;
     }
 
-    @DynamoDBAttribute(attributeName = "Phone")
-    public String getPhoneNumber() {
-        return PhoneNumber;
+    @DynamoDBAttribute(attributeName = "JoinDate")
+    public String getJoinDate() {
+        return JoinDate;
     }
+
+    @DynamoDBAttribute(attributeName = "Fav")
+    public ArrayList<String> getFavTopics(){return FavoriteTopics;}
+
+
 
     @DynamoDBAttribute(attributeName = "Followers")
     public ArrayList<String> getFollowers() {
@@ -70,6 +68,7 @@ public class User {
     public ArrayList<String> getUserCreatedRoomGroups() {
         return UserCreatedRoomGroups;
     }
+
     @DynamoDBAttribute(attributeName = "JoinedGroup")
     public ArrayList<String> getUserJoinedRoomGroups() {
         return UserJoinedRoomGroups;
@@ -80,6 +79,7 @@ public class User {
         Followers = followers;
     }
 
+    public void setFavTopics(ArrayList<String> topics){FavoriteTopics = topics;}
 
 
     public void setFollowing(ArrayList<String> following) {
@@ -128,7 +128,7 @@ public class User {
 
 
 
-    public void setPhoneNumber(String phoneNumber) {
-        PhoneNumber = phoneNumber;
+    public void setJoinDate(String date) {
+        JoinDate= date;
     }
 }
