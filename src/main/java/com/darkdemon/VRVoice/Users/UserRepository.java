@@ -3,6 +3,7 @@ package com.darkdemon.VRVoice.Users;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBSaveExpression;
 import com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException;
+import com.amazonaws.services.dynamodbv2.model.ConditionalOperator;
 import com.amazonaws.services.dynamodbv2.model.ExpectedAttributeValue;
 import com.darkdemon.VRVoice.Constants.ConstantController;
 import com.google.common.collect.ImmutableMap;
@@ -30,7 +31,7 @@ public class UserRepository {
                         .put("Phone",new ExpectedAttributeValue(false))
                         .build();
         saveExpression.setExpected(expectedAttributes);
-
+        saveExpression.setConditionalOperator(ConditionalOperator.AND);
         try {
             System.out.println("Saving User");
             Mapper.save(userObject, saveExpression);

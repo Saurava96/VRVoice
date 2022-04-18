@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 @RestController
@@ -41,11 +42,21 @@ public class UserController {
 
         User.setUserObject(UserData);
 
+        ArrayList<String> emptyList = new ArrayList<>();
+
+        User.setFavoriteTopics(emptyList);
+        User.setFollowers(emptyList);
+        User.setFollowing(emptyList);
+        User.setUserCreatedRoomGroups(emptyList);
+        User.setUserJoinedRoomGroups(emptyList);
+
         boolean savedUser = UserRepo.SaveUser(User);
 
-        if(savedUser){return "1";}
+
+         if(savedUser){return "1";}
 
         else{return "-1";}
+
 
     }
 

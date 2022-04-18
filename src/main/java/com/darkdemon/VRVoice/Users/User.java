@@ -1,6 +1,8 @@
 package com.darkdemon.VRVoice.Users;
 import com.amazonaws.services.dynamodbv2.datamodeling.*;
 
+import java.util.ArrayList;
+
 
 @DynamoDBTable(tableName = "UsersInfo")
 public class User {
@@ -8,15 +10,15 @@ public class User {
 
     private String UserID;
     private String UserName;
-    private String Followers; //list
-    private String Following; //list
+    private ArrayList<String> Followers; //list
+    private ArrayList<String> Following; //list
     private String UserBio;
     private String TwitterLink;
     private String InstagramLink;
     private String JoinDate;
-    private String UserCreatedRoomGroups; //list
-    private String UserJoinedRoomGroups; //list
-    private String FavoriteTopics; //list
+    private ArrayList<String> UserCreatedRoomGroups; //list
+    private ArrayList<String> UserJoinedRoomGroups; //list
+    private ArrayList<String> FavoriteTopics; //list
     private String Email;
 
     private String Password;
@@ -34,7 +36,7 @@ public class User {
     }
 
     @DynamoDBHashKey
-    @DynamoDBAttribute(attributeName = "User ID")
+    @DynamoDBAttribute(attributeName = "UserID")
     public String getUserID() {
         return UserID;
     }
@@ -43,108 +45,88 @@ public class User {
         UserID = userID;
     }
 
-
-    public String getUserName() {
-        return UserName;
-    }
-
-    public void setUserName(String userName) {
-        UserName = userName;
-    }
-
-    public String getFollowers() {
-        return Followers;
-    }
-
-    public void setFollowers(String followers) {
-        Followers = followers;
-    }
-
-    public String getFollowing() {
-        return Following;
-    }
-
-    public void setFollowing(String following) {
-        Following = following;
-    }
-
-    public String getUserBio() {
-        return UserBio;
-    }
-
-    public void setUserBio(String userBio) {
-        UserBio = userBio;
-    }
-
-    public String getTwitterLink() {
-        return TwitterLink;
-    }
-
-    public void setTwitterLink(String twitterLink) {
-        TwitterLink = twitterLink;
-    }
-
-    public String getInstagramLink() {
-        return InstagramLink;
-    }
-
-    public void setInstagramLink(String instagramLink) {
-        InstagramLink = instagramLink;
-    }
-
-    public String getJoinDate() {
-        return JoinDate;
-    }
-
-    public void setJoinDate(String joinDate) {
-        JoinDate = joinDate;
-    }
-
-    public String getUserCreatedRoomGroups() {
-        return UserCreatedRoomGroups;
-    }
-
-    public void setUserCreatedRoomGroups(String userCreatedRoomGroups) {
-        UserCreatedRoomGroups = userCreatedRoomGroups;
-    }
-
-    public String getUserJoinedRoomGroups() {
-        return UserJoinedRoomGroups;
-    }
-
-    public void setUserJoinedRoomGroups(String userJoinedRoomGroups) {
-        UserJoinedRoomGroups = userJoinedRoomGroups;
-    }
-
-    public String getFavoriteTopics() {
-        return FavoriteTopics;
-    }
-
-    public void setFavoriteTopics(String favoriteTopics) {
-        FavoriteTopics = favoriteTopics;
-    }
-
     @DynamoDBAttribute(attributeName = "EmailID")
     public String getEmail() {
         return Email;
-    }
-
-    public void setEmail(String email) {
-        Email = email;
-    }
-
-    public String getPassword() {
-        return Password;
-    }
-
-    public void setPassword(String password) {
-        Password = password;
     }
 
     @DynamoDBAttribute(attributeName = "Phone")
     public String getPhoneNumber() {
         return PhoneNumber;
     }
+
+    @DynamoDBAttribute(attributeName = "Followers")
+    public ArrayList<String> getFollowers() {
+        return Followers;
+    }
+
+
+    @DynamoDBAttribute(attributeName = "Following")
+    public ArrayList<String> getFollowing() {
+        return Following;
+    }
+
+    @DynamoDBAttribute(attributeName = "CreatedGroup")
+    public ArrayList<String> getUserCreatedRoomGroups() {
+        return UserCreatedRoomGroups;
+    }
+    @DynamoDBAttribute(attributeName = "JoinedGroup")
+    public ArrayList<String> getUserJoinedRoomGroups() {
+        return UserJoinedRoomGroups;
+    }
+
+
+    public void setFollowers(ArrayList<String> followers) {
+        Followers = followers;
+    }
+
+
+
+    public void setFollowing(ArrayList<String> following) {
+        Following = following;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public void setUserCreatedRoomGroups(ArrayList<String> userCreatedRoomGroups) {
+        UserCreatedRoomGroups = userCreatedRoomGroups;
+    }
+
+
+
+    public void setUserJoinedRoomGroups(ArrayList<String> userJoinedRoomGroups) {
+        UserJoinedRoomGroups = userJoinedRoomGroups;
+    }
+
+    public ArrayList<String> getFavoriteTopics() {
+        return FavoriteTopics;
+    }
+
+    public void setFavoriteTopics(ArrayList<String> favoriteTopics) {
+        FavoriteTopics = favoriteTopics;
+    }
+
+
+
+    public void setEmail(String email) {
+        Email = email;
+    }
+
+
+
+
 
     public void setPhoneNumber(String phoneNumber) {
         PhoneNumber = phoneNumber;
