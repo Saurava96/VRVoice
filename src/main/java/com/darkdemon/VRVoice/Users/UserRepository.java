@@ -6,6 +6,7 @@ import com.amazonaws.services.dynamodbv2.model.ConditionalCheckFailedException;
 import com.amazonaws.services.dynamodbv2.model.ConditionalOperator;
 import com.amazonaws.services.dynamodbv2.model.ExpectedAttributeValue;
 import com.darkdemon.VRVoice.Constants.ConstantController;
+import com.darkdemon.VRVoice.Rooms.Room;
 import com.google.common.collect.ImmutableMap;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -112,7 +113,19 @@ public class UserRepository {
 
         Mapper.save(user);
 
+    }
 
+    public String SaveRoom(Room room){
+
+        Mapper.save(room);
+
+        return "RoomSaved";
+
+    }
+
+    public Room GetRoom(String RoomID){
+
+        return Mapper.load(Room.class, RoomID);
 
     }
 

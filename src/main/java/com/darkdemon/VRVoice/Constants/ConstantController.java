@@ -20,4 +20,20 @@ public final static String JoinDate = "JoinDate";
 
 public final static String BaseRoomID = "BaseRoomID";
 
+public  final static String RoomPublicInfo = "RoomPublicInfo";
+
+public final static String RoomAccessibility = "RoomAccessibility";
+
+public final static String RoomTopics = "RoomTopics";
+
+public final static String RoomCircle = "RoomCircle";
+
+public final static String RoomLanguage = "RoomLanguage";
+
+public final static String RoomCreateDate = "RoomCreateDate";
+
+public final static String RoomCreatedBy = "RoomCreatedBy";
+
+public final static String RoomInfo = "RoomInfo";
+
 }
